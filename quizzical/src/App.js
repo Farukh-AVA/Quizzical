@@ -1,47 +1,33 @@
 import React from 'react'; 
+import StartQuiz from './components/StartQuiz.js';
+import Quiz from './components/Quiz.js';
+export default function App() {
 
-function App() {
+  const [startQuizState, setStartQuizState] = React.useState(true);
+  const [questions, setQuestions] = React.useState([]);
+  
 
-  const [homePage, setHomePage] = React.useState(true);
-  const [quiz, setQuiz] = React.useState(false); 
-
-  function startQuiz(){
-     setHomePage(prevHome => !prevHome);
-     setQuiz(prevQuiz => !prevQuiz );
-  }
-
-  function renderQuiz(){
-    return( 
-      <div>
-        "Hello world!"
-        <div className="TopRightShape"></div>
-        <div className="ButtonLeftShape"></div>
-      </div>
-    )
-  }
-
-  function renderHomePage(){
-    return (
-    <div> 
-      <h1 className="title">Quizzical</h1>
-      <p className="description">Some description if needed</p>
-      <button onClick={startQuiz} className="start-quiz-button">Start quiz</button>
-      <div className="TopRightShape"></div>
-      <div className="ButtonLeftShape"></div>
-    </div> 
-    )
-
-  }
-
-  return (
-  <div> 
-    
-    {
-      homePage? renderHomePage() : renderQuiz()
+  React.useEffect(() => {
+    fetch("https://opentdb.com/api.php?amount=5&category=22&difficulty=easy&type=multiple")
+    .then(res => res.json())
+    .then(data => setQuestions(data))
+  }, []);
+/** 
+  function modifiedQuize(){
+    const nweQuiz = [];
+    for(let i=0; i<5; i++){
+      
     }
-    
-  </div>
+  }
+  */
+  return (
+    <div>
+      {
+        startQuizState? <StartQuiz setStartQuizState={setStartQuizState}/>:
+                        <Quiz questions={questions} />
+      }
+    </div>
   );
 }
 
-export default App;
+
