@@ -62,7 +62,19 @@ body{
     border-radius: 30% 300% 0 0 ;
     z-index: -1;
 }
- 
+
+.container{
+    margin-left: 20px;
+}
+.questions{
+    font-size: 23px;
+    color: #293264;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+}
+.answers{
+    font-size: 17px; 
+}
 
   
   
