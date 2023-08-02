@@ -72,10 +72,25 @@ body{
     font-family: 'Karla', sans-serif;
     font-weight: bold;
 }
-.answers{
-    font-size: 17px; 
+.allAnswersContainer{
+    display: flex;
 }
-
+.allAnswers{
+    margin-top: 30px;
+    margin-right: 15px;
+    height: auto;
+    border: 1px solid #293264; 
+    border-radius: 15px;
+}    
+.answers-value{
+    font-size: 15px; 
+    color:#293264;
+    font-family: 'Inter';
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
   
   
   
