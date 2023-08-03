@@ -7,7 +7,7 @@ Quiz based on a solo project from [Scrimba React](https://scrimba.com/dashboard#
 [Play Quizzical](https://inspiring-klepon-68322d.netlify.app/)  
 
 <p align="center">
-   <img src="https://github.com/Farukh-AVA/tenzies-react-game/blob/main/TenziesGif.gif"  width=500><br>
+   <img src="https://github.com/Farukh-AVA/Quizzical/blob/main/QuizzicalGif.gif"  width=500><br>
 </p>
 ## How to Play
 
