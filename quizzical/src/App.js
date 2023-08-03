@@ -22,9 +22,9 @@ import {encode} from 'html-entities';
 export default function App() {
 
   const [startQuizState, setStartQuizState] = React.useState(true);
-  const [triviaData, setTriviaData] = React.useState([]);
+  //const [triviaData, setTriviaData] = React.useState([]);
   
-
+/** 
   React.useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5&category=22&difficulty=easy&type=multiple")
     .then(res => res.json())
@@ -59,12 +59,12 @@ export default function App() {
 
     return incorrect_answers;
   }
-
+*/
   return (
     <div>
       {
         startQuizState? <StartQuiz setStartQuizState={setStartQuizState}/>:
-                        <Quiz triviaData={triviaData}/>
+                        <Quiz/>
       }
     </div>
   );
