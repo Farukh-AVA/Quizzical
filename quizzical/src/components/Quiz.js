@@ -1,7 +1,7 @@
 import React from "react";
 import Answers from "./Answers.js"
 import { nanoid } from 'nanoid'
-import {encode} from 'html-entities';
+import {decode} from 'html-entities';
 export default function Quiz(){
     const [triviaData, setTriviaData] = React.useState([]);
     const [showResults, setShowResults] = React.useState(false);
@@ -12,6 +12,7 @@ export default function Quiz(){
       fetch("https://opentdb.com/api.php?amount=5&category=22&difficulty=easy&type=multiple")
       .then(res => res.json())
       .then(data => setTriviaData(filteringData(data.results)))
+       // eslint-disable-next-line
     }, [newGame]); 
 
    const correctAnswers = triviaData.map(item => item.correct_answer); 
@@ -25,7 +26,7 @@ export default function Quiz(){
         });
     
         filteredData.push({
-          question: { value: encode(data[i].question), id: nanoid()},
+          question: { value: decode(data[i].question), id: nanoid()},
           correct_answer: correct_answer,
           incorrect_answers: incorrect_answers,
           allAnswers: shuffleAnswers(correct_answer, incorrect_answers.concat())
@@ -36,15 +37,12 @@ export default function Quiz(){
     }
   
     function shuffleAnswers(correct_answer, incorrect_answers){
-  
+
       const randomIndex = Math.floor(Math.random() * (incorrect_answers.length + 1));
       incorrect_answers.splice(randomIndex, 0, correct_answer);
   
-      return encode(incorrect_answers);
+      return decode(incorrect_answers);
     }
-
-
-
 
   function quiz(data){
     const quiz = [];
@@ -116,7 +114,6 @@ function resetHoldAnswers(){
         }
       }
     }
-    //console.log(userCorrectAnswers)
     setUserCorrectanswers(userCorrectAnswers); 
   }
 
@@ -133,14 +130,18 @@ function resetHoldAnswers(){
         {!showResults?
           <div>
             {quiz(triviaData)} 
-            <button className="check-answers" onClick={checkAnswers}>Check Answers</button>
+            <div className="button">
+              <button onClick={checkAnswers}  className="check-answers">Check Answers</button>
+            </div>
             <div className="TopRightShape"></div>
             <div className="ButtonLeftShape"></div>
           </div> :
-          <div>
+          <div >
             {quiz(triviaData)} 
-            <button className="check-answers" onClick={toggleGame}>New Game</button>
-            <div className="results">{userCorrectAnswers}/5</div>
+            <div className="button">
+              <div className="results">You scored {userCorrectAnswers}/5 correct answers</div>
+              <button className="check-answers" onClick={toggleGame}>New Game</button>
+            </div>
             <div className="TopRightShape"></div>
             <div className="ButtonLeftShape"></div>
           </div>
