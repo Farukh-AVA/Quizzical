@@ -9,6 +9,7 @@ Quiz based on a solo project from [Scrimba React](https://scrimba.com/dashboard#
 <p align="center">
    <img src="https://github.com/Farukh-AVA/Quizzical/blob/main/QuizzicalGif.gif"  width=500><br>
 </p>
+
 ## How to Play
 
 1. Open the game in your web browser.
